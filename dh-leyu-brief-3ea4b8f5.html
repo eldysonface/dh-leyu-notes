@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>leyu · 站点记</title>
+  <style>
+    /* reset & base */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: #f7f6f3;
+      color: #1d1b1a;
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.65;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* wrapper */
+    .page {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 5rem;
+      width: 100%;
+    }
+
+    /* hero banner — 杂志式全宽氛围 */
+    .hero {
+      position: relative;
+      margin: 0 -1.5rem 2.8rem;
+      padding: 3.2rem 1.5rem;
+      background: #eae7df;
+      background-image: radial-gradient(circle at 20% 30%, #d6d0c4 0%, #e2ddd3 80%);
+      border-bottom: 1px solid #d1ccc1;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: #1f1c19;
+      margin-bottom: 0.6rem;
+      line-height: 1.15;
+    }
+
+    .hero .sub {
+      font-size: 1.05rem;
+      font-weight: 350;
+      color: #4a4640;
+      letter-spacing: 0.02em;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .hero .meta-tag {
+      display: inline-block;
+      background: #2f2c28;
+      color: #e8e4db;
+      font-size: 0.7rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 0.25rem 1rem;
+      border-radius: 20px;
+      margin-top: 1.2rem;
+    }
+
+    /* section title */
+    .section-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #7b756b;
+      margin: 2.8rem 0 0.8rem;
+      border-top: 1px solid #d4cfc5;
+      padding-top: 1.2rem;
+    }
+
+    .section-label:first-of-type {
+      margin-top: 0;
+      border-top: none;
+      padding-top: 0;
+    }
+
+    h2 {
+      font-size: 1.6rem;
+      font-weight: 480;
+      letter-spacing: -0.01em;
+      color: #1f1c19;
+      margin-bottom: 0.9rem;
+      line-height: 1.3;
+    }
+
+    p {
+      margin-bottom: 1.2rem;
+      color: #2d2a26;
+    }
+
+    .intro-note {
+      background: #f0ede8;
+      padding: 1.2rem 1.4rem;
+      border-left: 3px solid #9f978b;
+      margin: 1.6rem 0;
+      font-size: 0.96rem;
+      border-radius: 0 6px 6px 0;
+    }
+
+    a {
+      color: #2d4b3c;
+      text-decoration: none;
+      border-bottom: 1px solid #bbc7b9;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    a:hover {
+      color: #1d332b;
+      border-bottom-color: #1d332b;
+    }
+
+    .inline-link {
+      border-bottom: 1px solid #bbc7b9;
+      font-weight: 450;
+    }
+
+    /* card block */
+    .feature-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      margin: 1.8rem 0 1rem;
+    }
+
+    .feature-item {
+      flex: 1 1 180px;
+      background: #fcfaf7;
+      padding: 1.2rem 1.2rem 1.4rem;
+      border-radius: 10px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.02), 0 4px 12px rgba(0,0,0,0.02);
+    }
+
+    .feature-item h3 {
+      font-size: 1rem;
+      font-weight: 510;
+      margin-bottom: 0.3rem;
+      color: #1f1c19;
+    }
+
+    .feature-item p {
+      font-size: 0.9rem;
+      color: #4a4640;
+      margin-bottom: 0;
+    }
+
+    /* FAQ mini */
+    .faq-item {
+      margin: 1.6rem 0;
+      border-bottom: 1px solid #ded9d0;
+      padding-bottom: 1rem;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .faq-q {
+      font-weight: 510;
+      font-size: 1rem;
+      margin-bottom: 0.2rem;
+      color: #1f1c19;
+    }
+
+    .faq-a {
+      font-size: 0.95rem;
+      color: #4a4640;
+    }
+
+    /* footer */
+    .site-footer {
+      margin-top: 3.6rem;
+      padding-top: 1.8rem;
+      border-top: 1px solid #d4cfc5;
+      font-size: 0.85rem;
+      color: #6a655c;
+      text-align: center;
+    }
+
+    .site-footer a {
+      color: #6a655c;
+      border-bottom: 1px solid #cbc4b8;
+    }
+
+    .site-footer a:hover {
+      color: #2d4b3c;
+      border-bottom-color: #2d4b3c;
+    }
+
+    .visit-hint {
+      margin-top: 2.2rem;
+      background: #f0ede8;
+      padding: 1.2rem 1.5rem;
+      border-radius: 40px;
+      text-align: center;
+      font-size: 0.95rem;
+      color: #1f1c19;
+    }
+
+    .visit-hint a {
+      font-weight: 500;
+      border-bottom: 1px solid #9f978b;
+    }
+
+    /* responsive */
+    @media (max-width: 520px) {
+      .page { padding: 1.5rem 1rem 4rem; }
+      .hero { margin: 0 -1rem 2rem; padding: 2.4rem 1rem; }
+      .hero h1 { font-size: 2rem; }
+      .feature-item { flex: 1 1 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- hero -->
+    <header class="hero">
+      <h1>leyu</h1>
+      <div class="sub">信息 · 整合 · 可信路径</div>
+      <span class="meta-tag">· 站点概述 ·</span>
+    </header>
+
+    <!-- 背景说明 -->
+    <div class="section-label">背景</div>
+    <h2>一个专注于提供连接与参考的独立站点</h2>
+    <p>网络空间中，入口的可靠性往往决定了后续信息获取的效率。<strong>leyu</strong> 最初作为索引节点被设计，其核心定位并非内容生产，而是对经过初步筛选的线上资源进行聚合与指向。无论是工具类服务、行业资料还是社区入口，leyu 尝试在信息噪音中维持一条相对干净的线索。</p>
+    <p>站点的维护者长期关注数字环境的可用性与透明度，因此 leyu 在链接收录、分类描述上保持了较高的审慎标准。每一个被收录的地址均经过基础可用性核实与背景确认，避免盲目堆砌或失效链接的累积。</p>
+
+    <!-- 三段自然介绍之一：结构特点 -->
+    <div class="section-label">结构特点</div>
+    <p>leyu 的页面布局偏向扁平化，分类层级通常控制在两层以内，以降低认知负荷。每个类目下附带简短的功能说明，而非仅仅罗列链接。这种设计背后的考虑是：使用者需要快速判断一个资源是否匹配其当前需求，而非在一长串标题中逐个点击试探。</p>
+    <p>此外，leyu 对链接的标注方式较为克制——通常仅使用名称、一行摘要以及来源标识，不加入营销式措辞或主观评分。这种去修饰的处理，反而让资源本身的可信度更容易被识别。</p>
+
+    <!-- 三段自然介绍之二：场景与可信说明 -->
+    <div class="section-label">可信维度</div>
+    <p>在信息可信度的维护上，leyu 采取了以下措施：定期检查链接有效性，标注已知的官方或原发来源，对第三方聚合页附加提示。站点本身不嵌入商业推广脚本，也不设置跳转中间页，使用者可以直接触及目标资源。这些细节虽不起眼，却构成了 leyu 作为导航节点的基本信誉。</p>
+    <p>举例来说，如果你通过 leyu 找到某个社区或文档库，通常可以直接进入该资源的原始地址，而非经过追踪链或中介页面。站点的存在意义更接近于一本精简的「地址簿」，而非流量漏斗。</p>
+
+    <!-- 特点卡片（呼应杂志感） -->
+    <div class="section-label">关键特征</div>
+    <div class="feature-grid">
+      <div class="feature-item">
+        <h3>轻量索引</h3>
+        <p>分类克制，聚焦实用资源，无冗余内容堆砌。</p>
+      </div>
+      <div class="feature-item">
+        <h3>透明链接</h3>
+        <p>无跟踪参数，无中介跳转，直达目标地址。</p>
+      </div>
+      <div class="feature-item">
+        <h3>定期维护</h3>
+        <p>链接有效性检查与来源标注为常规工作项。</p>
+      </div>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="section-label">常见理解</div>
+    <div class="faq-item">
+      <div class="faq-q">leyu 收录何种类型的资源？</div>
+      <div class="faq-a">以工具、文档、社区与信息聚合站为主，暂不收录个人博客或商业产品首页，除非其具备广泛参考价值。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">链接失效如何处理？</div>
+      <div class="faq-a">leyu 维护团队会定期扫描收录链接，发现失效后先尝试寻找替代地址，若无法替换则移除条目，并在更新日志中备注。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">是否可以提交资源？</div>
+      <div class="faq-a">目前 leyu 不接受公开提交，收录决策由维护者基于内容价值与稳定性独立判断。</div>
+    </div>
+
+    <!-- 页尾访问提示，自然包含 a 标签 -->
+    <div class="visit-hint">
+      若需查阅完整的索引列表，可前往 <a href="https://dh-leyu.com">leyu</a> 直接浏览分类目录与对应资源。
+    </div>
+
+    <!-- footer -->
+    <footer class="site-footer">
+      <p>leyu · 独立索引站点 · 以审慎为尺</p>
+      <p style="margin-top:0.4rem;">页面内容仅为介绍与说明，不构成对任何外部资源的背书或担保。</p>
+    </footer>
+  </div>
+</body>
+</html>
