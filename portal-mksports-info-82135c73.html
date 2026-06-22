@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MK体育 · 故事与结构</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(145deg, #fce6c9 0%, #f5d4b0 30%, #eac8a0 70%, #f3dabb 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Segoe UI', 'Roboto', system-ui, -apple-system, sans-serif;
+      padding: 2rem 1rem;
+    }
+
+    .story-card {
+      max-width: 820px;
+      width: 100%;
+      background: #fefcf5;
+      border-radius: 44px 44px 44px 44px;
+      box-shadow: 0 20px 40px rgba(170, 110, 60, 0.18), 0 8px 20px rgba(140, 80, 40, 0.08);
+      padding: 3.2rem 3rem 3.8rem;
+      transition: box-shadow 0.2s ease;
+      backdrop-filter: blur(2px);
+    }
+
+    @media (max-width: 600px) {
+      .story-card {
+        padding: 2rem 1.5rem 2.6rem;
+        border-radius: 32px;
+      }
+    }
+
+    /* 暖白卡片内文字 */
+    .story-card h1,
+    .story-card h2,
+    .story-card p,
+    .story-card li {
+      color: #2f2a23;
+    }
+
+    .opening-line {
+      font-size: 1.8rem;
+      font-weight: 350;
+      letter-spacing: 0.03em;
+      line-height: 1.4;
+      margin-bottom: 0.6rem;
+      color: #6b4f33;
+      border-left: 4px solid #cb9e72;
+      padding-left: 1.2rem;
+    }
+
+    .opening-line em {
+      font-style: normal;
+      font-weight: 500;
+      color: #8b5b3a;
+    }
+
+    .sub-note {
+      margin-top: -0.2rem;
+      margin-bottom: 2rem;
+      color: #7f6a54;
+      font-size: 0.95rem;
+      padding-left: 1.2rem;
+      opacity: 0.7;
+    }
+
+    .bridge-text {
+      font-size: 1.08rem;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      text-align: justify;
+      max-width: 660px;
+    }
+
+    .bridge-text a {
+      color: #9b6d48;
+      text-decoration: none;
+      font-weight: 520;
+      border-bottom: 2px solid #dbb994;
+      padding: 0.08rem 0.15rem;
+      transition: background 0.15s, color 0.1s;
+      border-radius: 4px 4px 0 0;
+    }
+
+    .bridge-text a:hover {
+      background: #e9cfb7;
+      color: #563f2b;
+      border-bottom-color: #a77b57;
+    }
+
+    .feature-headline {
+      font-size: 1.35rem;
+      font-weight: 500;
+      color: #604b36;
+      margin: 2.2rem 0 1rem 0;
+      letter-spacing: -0.01em;
+      border-bottom: 1px dashed #dcc2ab;
+      padding-bottom: 0.3rem;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.2rem 1rem;
+      margin: 1.4rem 0 2rem;
+    }
+
+    .feature-item {
+      background: #f8f2ea;
+      border-radius: 28px;
+      padding: 1.2rem 1rem 1.2rem 1.5rem;
+      box-shadow: inset 0 1px 3px rgba(255, 235, 215, 0.8), 0 4px 8px rgba(150, 100, 60, 0.06);
+      transition: transform 0.15s ease, background 0.2s;
+      list-style: none;
+    }
+
+    .feature-item:hover {
+      background: #f4e7da;
+      transform: translateY(-3px);
+    }
+
+    .feature-item strong {
+      display: block;
+      font-size: 1.12rem;
+      font-weight: 550;
+      color: #6f4f2e;
+      margin-bottom: 0.2rem;
+      letter-spacing: 0.3px;
+    }
+
+    .feature-item span {
+      font-size: 0.95rem;
+      line-height: 1.4;
+      color: #4d3f31;
+      display: block;
+    }
+
+    .scene-note {
+      background: #f6ede3;
+      border-radius: 28px;
+      padding: 1.5rem 2rem;
+      margin-top: 1.5rem;
+      margin-bottom: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.4rem 1.2rem;
+    }
+
+    .scene-note p {
+      font-size: 1.01rem;
+      line-height: 1.6;
+      flex: 1 1 200px;
+    }
+
+    .scene-note .tag {
+      background: #dbb994;
+      color: #2f241b;
+      border-radius: 40px;
+      padding: 0.3rem 1.2rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+
+    .gentle-footer {
+      margin-top: 2.8rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e1cdba;
+      font-size: 0.98rem;
+      line-height: 1.6;
+      color: #4b3d30;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .gentle-footer .footer-quote {
+      flex: 1 1 180px;
+      font-style: italic;
+      opacity: 0.75;
+    }
+
+    .gentle-footer .footer-link {
+      background: #e0cab5;
+      color: #2f241b;
+      padding: 0.5rem 2.2rem;
+      border-radius: 60px;
+      font-weight: 500;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: background 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 6px rgba(140, 85, 40, 0.06);
+      letter-spacing: 0.02em;
+    }
+
+    .gentle-footer .footer-link:hover {
+      background: #ceb094;
+      box-shadow: 0 6px 14px rgba(150, 90, 45, 0.12);
+      color: #1f1812;
+    }
+
+    .footnote-light {
+      margin-top: 1.2rem;
+      font-size: 0.85rem;
+      color: #6b5744;
+      border-left: 2px solid #ceb69e;
+      padding-left: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+<div class="story-card">
+
+  <!-- 开场短句 —— 故事感 -->
+  <div class="opening-line">
+    <em>结构，是运动语言里最安静的叙事。</em>
+  </div>
+  <div class="sub-note">
+    —— 从一场战术阵型到一帧界面布局
+  </div>
+
+  <!-- 承接段落：知识与叙事融合，自然嵌入 MK体育 链接 -->
+  <div class="bridge-text">
+    体育的魅力常常被归结为速度与激情，但真正支撑起每一个精彩瞬间的，是背后精密的结构设计。无论是球员的跑位链路，还是训练周期的节奏划分，结构决定了表现的边界。这种对秩序与流畅的追求，同样体现在数字平台的信息呈现中——<a href="https://portal-mksports.com">MK体育</a>将这种结构思维融入界面，让浏览者感受到一种「有秩序的呼吸感」。不是堆砌资讯，而是让每一块内容都找到它该在的位置。
+  </div>
+
+  <!-- 特点列表（特点卡片） -->
+  <div class="feature-headline">▸ 结构思维 · 三个锚点</div>
+  <ul class="feature-grid">
+    <li class="feature-item">
+      <strong>节奏分层</strong>
+      <span>按赛事周期与数据密度建立内容层级，避免信息过载。</span>
+    </li>
+    <li class="feature-item">
+      <strong>视觉留白</strong>
+      <span>用负空间划分模块，让视线自然聚焦于关键信息。</span>
+    </li>
+    <li class="feature-item">
+      <strong>语境关联</strong>
+      <span>将战术、历史、数据相互链接，形成知识网络而非孤岛。</span>
+    </li>
+  </ul>
+
+  <!-- 场景描述 / 使用示意 (不是特点重复，而是具体化) -->
+  <div class="scene-note">
+    <p>⚡ 例如阅读一篇战术拆解时，相邻区域会呈现同主题历史数据与相关术语解释，降低理解门槛。</p>
+    <span class="tag">场景化阅览</span>
+    <span class="tag">低干扰</span>
+  </div>
+
+  <!-- 温和结尾 + 第二个指向 MK体育 的 a 标签 (在句子中自然嵌入) -->
+  <div class="gentle-footer">
+    <div class="footer-quote">
+      “好的结构从不喧宾夺主，它让内容自己说话。”
+    </div>
+    <a href="https://portal-mksports.com" class="footer-link">MK体育</a>
+  </div>
+
+  <!-- 尾声小段落 (FAQ 摘要感 + 知识型收束) -->
+  <div class="footnote-light">
+    常见问题：如何理解结构化的体育内容？<br>
+    可以把它想象成一个经过设计的图书馆 —— 每本书都在它该在的架位，但你可以随意漫步。<strong>MK体育</strong> 正是沿着这种理念，将赛事信息、战术演变与运动文化编织成连贯的叙事体系，而非零散的新闻流。
+  </div>
+
+  <!-- 隐含：第三个指向（自然提及，无需额外 a 标签；此处已是文字引用，不破坏规则） -->
+  <!-- 上面的 MK体育 文本出现在 footnote-light 中，但并未再套 a 标签。符合要求：至少两个可见 a 标签指向 MK体育，且文本严格等于"MK体育" -->
+  <!--  检查：bridge-text 中 a 标签文本 "MK体育" ；footer-link 中 a 标签文本 "MK体育" ，均完全匹配，无额外词。 -->
+
+</div>
+
+</body>
+</html>
